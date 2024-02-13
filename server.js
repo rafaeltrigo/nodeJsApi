@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 //import cors from 'cors';
 import data from './data.js';
 import Datastore from 'nedb';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 dotenv.config();
 const app = express();
@@ -75,6 +76,7 @@ app.post('/apiPost', (request, response) => {
 
 function insertFunc(postData){
   database.insert(postData); // Insere no Banco de dados
+  console.log(postData)
   return postData; // Retorna os dados inseridos
 }
 
