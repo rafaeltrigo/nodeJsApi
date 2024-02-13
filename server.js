@@ -14,6 +14,7 @@ app.get('/api/data', async (req, res) => {
     try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1');
         res.json(response.data);
+        console.log(response.data)
     } catch (error) {
         console.error('Erro ao obter os dados:', error.message);
         res.status(500).json({ error: 'Erro ao obter os dados' });
