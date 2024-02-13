@@ -1,4 +1,4 @@
-// server.ja
+// server.js
 import express from 'express';
 import dotenv from 'dotenv';
 //import cors from 'cors';
@@ -65,7 +65,7 @@ app.post('/apiPost', (request, response) => {
   const dataPost = request.body
   insertFunc(dataPost)
    console.log(dataPost)
-  response.status(200).json(dataPost)
+  response.json(dataPost)
 
 })
 
@@ -73,6 +73,10 @@ function insertFunc(postData){
   database.insert(postData); // Insere no Banco de dados
 }
 
+// function insertFunc(postData){
+//   database.insert(postData); // Insere no Banco de dados
+//   return postData; // Retorna os dados inseridos
+// }
 
 
 
