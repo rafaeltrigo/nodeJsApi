@@ -40,6 +40,24 @@ app.get('/api/data', async (req, res) => {
 });
 
 // Inicia o servidor
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
+
+// Manipulador de eventos para o encerramento do servidor
+process.on('SIGINT', async () => {
+    console.log('Encerrando o servidor...');
+    try {
+        // Fecha a conexão com o banco de dados
+        await client.end();
+        console.log('Conexão com o banco de dados encerrada.');
+    } catch (error) {
+        console.error('Erro ao encerrar a conexão com o banco de dados:', error.message);
+    }
+    // Encerra o servidor
+    server.close(() => {
+        console.log('Servidor encerrado.');
+        process.exit(0);
+    });
+});
+
