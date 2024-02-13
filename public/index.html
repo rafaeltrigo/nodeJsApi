@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btnGet">Receive data From server ( Get )</button>
+  <button id="btnPost">Post data to server ( Post )</button>
+  <div class="myDiv" id="myDiv"></div>
+</body>
+
+<script>
+  const myDiv = document.getElementById('myDiv')
+  const btnGet = document.getElementById('btnGet')
+  const btnPost = document.getElementById('btnPost')
+
+////////////// GET ///////////////////////
+
+  btnGet.addEventListener('click',()=>{
+      getData()
+  })
+const getData = async ()=>{
+    const request = await fetch('/api')
+    const data = await request.json()
+    console.log(data)
+    data.map(e => {
+        myDiv.innerHTML += `ID : ${e.id}<br>Name : ${e.name}<br>Age : ${e.age}<br>`;
+    });
+}
+/////////// POST ////////////////////////////////
+btnPost.addEventListener('click',()=>{
+      postData()
+  })
+
+  const myData = {id:55,name:'Rafael Trigo'}
+  const options = {
+    method : 'POST',
+    headers :{'Content-Type' :'application/json'},
+    body : JSON.stringify(myData)
+  }
+  const postData = async ()=>{
+    const request = await fetch('/apiPost',options)
+    const data = await request.json()
+    console.log(data)
+    const myData = data
+        myDiv.innerHTML += `ID : ${myData.id }<br> Name : ${myData.name}`
+
+}
+</script>
+</html>
