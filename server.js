@@ -69,14 +69,14 @@ app.post('/apiPost', (request, response) => {
 
 })
 
-function insertFunc(postData){
-  database.insert(postData); // Insere no Banco de dados
-}
-
 // function insertFunc(postData){
 //   database.insert(postData); // Insere no Banco de dados
-//   return postData; // Retorna os dados inseridos
 // }
+
+function insertFunc(postData){
+  database.insert(postData); // Insere no Banco de dados
+  return postData; // Retorna os dados inseridos
+}
 
 
 
