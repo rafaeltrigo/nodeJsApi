@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 //import cors from 'cors';
 import data from './data.js';
 import Datastore from 'nedb';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+//import { SpeedInsights } from "@vercel/speed-insights/next"
 
 dotenv.config();
 const app = express();
@@ -64,9 +64,9 @@ app.get(`/api/:id/:info`, (req, res) => {
 // Define uma rota para Post
 app.post('/apiPost', (request, response) => {
   const dataPost = request.body
-  database.insert(postData);
+  database.insert(dataPost);
    console.log(dataPost)
-   return response.json(dataPost)
+   response.json(dataPost)
 
 })
 
