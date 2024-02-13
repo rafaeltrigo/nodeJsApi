@@ -23,16 +23,16 @@ const Local_URL = 'http://localhost:'
 const server = app.listen(porta, () => {
   console.log(`Servidor rodando em ${Local_URL}${porta}/api`);
 
-  database.remove({ id: 1}, { multi: true });
-  database.find({}, function (err, docs) {
-    console.log(docs);
-  });
+  // database.remove({ id: 1}, { multi: true });
+  // database.find({}, function (err, docs) {
+  //   console.log(docs);
+  // });
 });
 
 
 // Define uma rota raiz
 app.get('/api', (req, res) => {
-  res.json(data);
+return  res.json(data);
 });
 
 // Define uma rota para buscar um item específico com base no ID
@@ -64,21 +64,13 @@ app.get(`/api/:id/:info`, (req, res) => {
 // Define uma rota para Post
 app.post('/apiPost', (request, response) => {
   const dataPost = request.body
-  insertFunc(dataPost)
+  database.insert(postData);
    console.log(dataPost)
-  response.json(dataPost)
+   return response.json(dataPost)
 
 })
 
-// function insertFunc(postData){
-//   database.insert(postData); // Insere no Banco de dados
-// }
 
-function insertFunc(postData){
-  database.insert(postData); // Insere no Banco de dados
-  console.log(postData)
-  return postData; // Retorna os dados inseridos
-}
 
 
 
