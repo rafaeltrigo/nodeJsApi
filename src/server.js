@@ -8,7 +8,7 @@ const port = 3000;
 
 // Configuração para conexão com o banco de dados PostgreSQL
 const client = new Client({
-  connectionString: 'postgres://cioqvwwh:yssBFLa23txoIr7AE9iwwLqT9JPe9T0B@tai.db.elephantsql.com/cioqvwwh',
+
 });
 
 // Conecta-se ao banco de dados PostgreSQL
